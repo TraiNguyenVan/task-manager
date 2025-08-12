@@ -40,7 +40,7 @@ function renderTasks() {
         const taskdate = document.createTextNode(`(Added on: ${task.time.toLocaleString()})`);
         const deletebutton = document.createElement('button');
         deletebutton.type = 'button';
-        deletebutton.textContent = 'delete';
+        deletebutton.textContent = 'Delete';
         deletebutton.className = "delete-btn";
         deletebutton.addEventListener('click', function() {
             if (tasks.length == 1) {
