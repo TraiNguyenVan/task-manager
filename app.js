@@ -1,4 +1,4 @@
-const tasks = [];
+let tasks = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     const taskForm = document.getElementById('taskForm');
@@ -28,7 +28,7 @@ function renderTasks() {
     const taskList = document.getElementById('tasklist');
     taskList.innerHTML = '';
     tasks.forEach(task => {
-        const li = document.createElement('li');
+        const tr = document.createElement('tr');
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = task.completed;
@@ -36,10 +36,36 @@ function renderTasks() {
             task.completed = checkbox.checked;
             renderTasks(); // Re-render to update the task list
         });
-        const textNode = document.createTextNode(` ${task.text} (Added on: ${task.time.toLocaleString()})`);
-        li.appendChild(checkbox);
-        li.appendChild(textNode);
-        taskList.appendChild(li);
+        const taskcontent = document.createTextNode(` ${task.text}`);
+        const taskdate = document.createTextNode(`(Added on: ${task.time.toLocaleString()})`);
+        const deletebutton = document.createElement('button');
+        deletebutton.type = 'button';
+        deletebutton.textContent = 'delete';
+        deletebutton.className = "delete-btn";
+        deletebutton.addEventListener('click', function() {
+            if (tasks.length == 1) {
+                tasks = [];
+            }
+            else {
+                tasks.splice(task.id, 1);
+            }
+            renderTasks(); // Re-render to update the task list
+
+        });
+        
+        const td1 = document.createElement('td');
+        const td2 = document.createElement('td');
+        const td3 = document.createElement('td');
+        const td4 = document.createElement('td');
+        td1.appendChild(checkbox);
+        td2.appendChild(taskcontent);
+        td3.appendChild(taskdate);
+        td4.appendChild(deletebutton);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        taskList.appendChild(tr);
       });
 
 }

@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task manager</title>
     <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Task Manager</h1>
     <form id="taskForm">    
         <input type="text" id="taskInput" placeholder="Enter a new task" required>
         <button type="submit">Add Task</button>
-    <ul id="tasklist">
-        <!-- Tasks will be dynamically added here -->
-    </ul>
+    <table id="tasklist-table">
+        <thead>
+            <tr><th>Completed</th><th>Task content</th><th>Date</th><th>Delete task</th></tr>
+        </thead>
+        <tbody id="tasklist">
+
+        </tbody>
+    </table>
 
 </body>
 </html>
